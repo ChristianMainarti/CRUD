@@ -9,20 +9,16 @@ using System.ComponentModel.DataAnnotations;
 namespace CRUD_SATS.Models
 {
     [Table("Pontos")]
-    class Ponto
+    public class Ponto
     {
         [Key]
         public int ID_Ponto { get; set; }
-
         [StringLength(50)]
         public string Nome_Ponto { get; set; }
-
         [StringLength(100)]
         public string Endereço_Ponto { get; set; }
-
         [StringLength(50)]
         public string Nome_Medidor { get; set; }
-
         [ForeignKey("Macro")]
         public int Macro_ID { get; set; }
         public Macro Macro { get; set; }
@@ -34,7 +30,7 @@ namespace CRUD_SATS.Models
         public ICollection<LeituraBomba> LeituraBombas { get; set; }
     }
     [Table("Macros")]
-    class Macro
+    public class Macro
     {   [Key]
         public int ID { get; set; }
 
@@ -43,12 +39,12 @@ namespace CRUD_SATS.Models
         public ICollection<Ponto> Pontos { get; set; }
     }
     [Table("Tipos_Ponto")]
-    class Tipo_Ponto
+    public class Tipo_Ponto
     {   [Key]
         public int ID_Nome { get; set; }
     }
     [Table("ConfigVaz")]
-    class ConfigVaz
+    public class ConfigVaz
     {
         [Key]
         public int ID_ConfigV { get; set; }
@@ -60,7 +56,7 @@ namespace CRUD_SATS.Models
     }
     [Table("ConfigNv")]
 
-    class ConfigNv
+    public class ConfigNv
     {   [Key]
         public int ID { get; set; }
         public int LimSup { get; set; }
@@ -72,7 +68,7 @@ namespace CRUD_SATS.Models
     }
     [Table("ConfigBomba")]
 
-    class ConfigBomba
+    public class ConfigBomba
     {   
         [Key]
         public int ID { get; set; }
@@ -95,7 +91,7 @@ namespace CRUD_SATS.Models
         public int Ponto_Leitura { get; set; }
     }
     [Table("LeiturasVazão")]
-    class LeituraVazão
+    public class LeituraVazão
     {   
         [Key]
         public int ID_Leitura { get; set; }
@@ -109,7 +105,7 @@ namespace CRUD_SATS.Models
         public Ponto Ponto { get; set; }
     }
     [Table("LeiturasNível")]
-    class LeituraNível
+    public class LeituraNível
     {
         [Key]
         public int ID_Leitura { get; set; }
@@ -124,7 +120,7 @@ namespace CRUD_SATS.Models
         public Ponto Ponto { get; set; }
     }
     [Table("LeiturasBomba")]    
-    class LeituraBomba
+    public class LeituraBomba
     {
         [Key]
         public int ID_Leitura { get; set; }

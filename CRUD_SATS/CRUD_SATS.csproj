@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\202107131718312_teste.cs" />
+    <Compile Remove="Migrations\202107131718312_teste.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Migrations\202107131718312_teste.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="entityFramework" Version="6.4.4" />
     <PackageReference Include="MySql.Data" Version="8.0.25" />
     <PackageReference Include="MySql.Data.EntityFramework" Version="8.0.25" />

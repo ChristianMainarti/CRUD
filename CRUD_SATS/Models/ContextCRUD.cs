@@ -1,13 +1,16 @@
-﻿using System.Data.Entity;
-using System.Data.Entity.Migrations;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using MySql.Data.EntityFramework;
+using System.Data.Common;
+
 
 namespace CRUD_SATS.Models
 {
-    class ContextCRUD: DbContext
+    public class ContextCRUD : DbContext
     {
-        public ContextCRUD() : base("crud_sats")
+        public ContextCRUD() : base()
         {
-
         }
         public DbSet<Ponto> Pontos { get; set; }
         public DbSet<Macro> Macros { get; set; }
