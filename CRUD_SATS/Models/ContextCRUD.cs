@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 using System.Data.Entity.Migrations;
 
 namespace CRUD_SATS.Models
 {
     class ContextCRUD: DbContext
     {
-        public ContextCRUD() : base()
+        public ContextCRUD() : base("crud_sats")
         {
 
         }
@@ -20,6 +15,9 @@ namespace CRUD_SATS.Models
         public DbSet<ConfigVaz> ConfigVazs { get; set; }
         public DbSet<ConfigNv> ConfigNvs { get; set; }
         public DbSet<ConfigBomba> ConfigBombas { get; set; }
-
+        public DbSet<Leitura> Leituras { get; set; }
+        public DbSet<LeituraVazão> LeituraVazãos { get; set; }
+        public DbSet<LeituraNível> LeituraNívels { get; set; }
+        public DbSet<LeituraBomba> LeituraBombas { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using CRUD_SATS.Models;
 
 namespace CRUD_SATS
 {
@@ -6,7 +7,8 @@ namespace CRUD_SATS
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }
+

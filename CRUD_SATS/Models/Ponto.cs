@@ -12,29 +12,34 @@ namespace CRUD_SATS.Models
     class Ponto
     {
         [Key]
-        public int IDPonto { get; set; }
-        [StringLength(50)]
+        public int ID_Ponto { get; set; }
 
-        public string NomePonto { get; set; }
+        [StringLength(50)]
+        public string Nome_Ponto { get; set; }
+
         [StringLength(100)]
+        public string Endereço_Ponto { get; set; }
 
-        public string EndereçoPonto { get; set; }
         [StringLength(50)]
+        public string Nome_Medidor { get; set; }
 
-        public string NomeMedidor { get; set; }
         [ForeignKey("Macro")]
         public int Macro_ID { get; set; }
         public Macro Macro { get; set; }
-        public ICollection<ConfigVaz> ConfigVazs { get; set; }
-        public ICollection<ConfigNv> ConfigNvs { get; set; }
-        public ICollection<ConfigBomba> ConfigBombas { get; set; }
+        public ICollection<ConfigVaz> Config_Vazs { get; set; }
+        public ICollection<ConfigNv> Config_Nvs { get; set; }
+        public ICollection<ConfigBomba> Config_Bombas { get; set; }
+        public ICollection<LeituraVazão> LeituraVazãos { get; set; }
+        public ICollection<LeituraNível> LeituraNívels { get; set; }
+        public ICollection<LeituraBomba> LeituraBombas { get; set; }
     }
     [Table("Macros")]
     class Macro
     {   [Key]
         public int ID { get; set; }
+
         [StringLength(50)]
-        public string NomeMacro { get; set; }
+        public string Nome_Macro { get; set; }
         public ICollection<Ponto> Pontos { get; set; }
     }
     [Table("Tipos_Ponto")]
@@ -47,8 +52,9 @@ namespace CRUD_SATS.Models
     {
         [Key]
         public int ID_ConfigV { get; set; }
-        public int UnidadeMedida { get; set; }
-        [ForeignKey("Pontos")]
+        public int Unidade_Medida { get; set; }
+
+        [ForeignKey("Ponto")]
         public int Ponto_ID { get; set; }
         public Ponto Ponto { get; set; }
     }
@@ -59,26 +65,75 @@ namespace CRUD_SATS.Models
         public int ID { get; set; }
         public int LimSup { get; set; }
         public int LimInf { get; set; }
-        [ForeignKey("Pontos")]
+
+        [ForeignKey("Ponto")]
         public int Ponto_ID { get; set; }
         public Ponto Ponto { get; set; }
     }
     [Table("ConfigBomba")]
 
     class ConfigBomba
-    {
+    {   
         [Key]
         public int ID { get; set; }
         public bool Estado { get; set; }
-        [ForeignKey("Pontos")]
+
+        [ForeignKey("Ponto")]
         public int Ponto_ID { get; set; }
         public Ponto Ponto { get; set; }
 
     }
     [Table("Leituras")]
 
-    class Leitura
+    public class Leitura
     {
+        [Key]
+        [StringLength(50)]
+        public string Leiturista { get; set; }
+        public DateTime Data_Hora { get; set; } 
+        public float Valor_Leitura { get; set; }
+        public int Ponto_Leitura { get; set; }
+    }
+    [Table("LeiturasVazão")]
+    class LeituraVazão
+    {   
+        [Key]
+        public int ID_Leitura { get; set; }
+        public DateTime Data_Hora { get; set; }
 
+        [StringLength(50)]
+        public string Leiturista { get; set; }
+        public float Valor_Leitura { get; set; }
+        [ForeignKey("Ponto")]
+        public int Ponto_Leitura { get; set; }
+        public Ponto Ponto { get; set; }
+    }
+    [Table("LeiturasNível")]
+    class LeituraNível
+    {
+        [Key]
+        public int ID_Leitura { get; set; }
+        public DateTime Data_Hora { get; set; }
+        [StringLength(50)]
+        public string Leiturista { get; set; }
+        public float Valor_Leitura { get; set; }
+        public bool Tipo_Nível { get; set; }
+
+        [ForeignKey("Ponto")]
+        public int Ponto_Leitura { get; set; }
+        public Ponto Ponto { get; set; }
+    }
+    [Table("LeiturasBomba")]    
+    class LeituraBomba
+    {
+        [Key]
+        public int ID_Leitura { get; set; }
+        public DateTime Data_Hora { get; set; }
+        [StringLength(50)]
+        public string Leiturista { get; set; }
+        public bool Valor_Leitura { get; set; }
+        [ForeignKey("Ponto")]
+        public int Ponto_Leitura { get; set; }
+        public Ponto Ponto { get; set; }
     }
 }
