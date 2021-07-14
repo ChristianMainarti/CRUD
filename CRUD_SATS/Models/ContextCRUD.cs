@@ -5,6 +5,7 @@ using MySql.Data.EntityFramework;
 using System.Data.Common;
 
 
+
 namespace CRUD_SATS.Models
 {
     public class ContextCRUD : DbContext
@@ -22,5 +23,11 @@ namespace CRUD_SATS.Models
         public DbSet<LeituraVazão> LeituraVazãos { get; set; }
         public DbSet<LeituraNível> LeituraNívels { get; set; }
         public DbSet<LeituraBomba> LeituraBombas { get; set; }
+    }
+
+    [DbConfigurationType(typeof(MySqlEFConfiguration))]
+    public class MyConfiguration : DbConfiguration
+    {
+
     }
 }
